@@ -12,6 +12,8 @@ This will help you in getting best deal on fuel price from your surrounding subu
 
 4. Open 'http://localhost:5000/' in browser to explore application
 
+5. Check working @ https://fuelpricewa.herokuapp.com/
+
    
 
 ##### ![](fuelprice.png)
