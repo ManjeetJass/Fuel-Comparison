@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block searchbutton %}
+    <a class="btn btn-primary" href="/" role="button">Refine Search</a>
+    <br><br>
+    <b>Suburb: </b>{{ selected_value['Suburb'] }}, <b>Product: </b>{{ selected_value['Product']}},
+<b>Brand:</b> {{ selected_value['Brand'] }}, <b>Surrounding:</b> {{ selected_value['Surrounding'] }}
+{% endblock %}
+
+{% block searchresult %}
+    <table class="table table-sm table-striped tableA">
+        <thead>
+            <tr>
+              <th scope="col">Brand</th>
+              <th scope="col">Location</th>
+              <th scope="col">Address</th>
+              <th scope="col">Today Price</th>
+              <th scope="col">Tomorrow Price</th>
+                <th scope="col">Map</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for index in fuel_price.index %}
+                <tr>
+                    <td> {{fuel_price['brand_today'][index]}} </td>
+                    <td> {{fuel_price['location_today'][index]}} </td>
+                    <td> {{fuel_price['address_today'][index]}} </td>
+                    {% if 'price_tomorrow' in fuel_price %}
+                        {% if fuel_price['price_tomorrow'][index] < fuel_price['price_today'][index] %}
+                            <td style="color:#FF0000"> {{fuel_price['price_today'][index]}} </td>
+                        {% else %}
+                            <td style="color:#008000"> {{fuel_price['price_today'][index]}} </td>
+                        {% endif %}
+                    {% else %}
+                        <td>{{fuel_price['price_today'][index]}}</td>
+                    {% endif %}
+
+                    {% if 'price_tomorrow' in fuel_price %}
+                        {% if fuel_price['price_tomorrow'][index] > fuel_price['price_today'][index] %}
+                            <td style="color:#FF0000"> {{fuel_price['price_tomorrow'][index]}} </td>
+                        {% else %}
+                            <td style="color:#008000"> {{fuel_price['price_tomorrow'][index]}} </td>
+                        {% endif %}
+                    {% else %}
+                        <td>Fuel price not listed yet</td>
+                    {% endif %}
+
+                    <td>
+                        {% set latitude = fuel_price['latitude_today'][index] %}
+                        {% set longitude = fuel_price['longitude_today'][index] %}
+                        {% set google_location = 'https://www.google.com/maps/search/?api=1&query=' + latitude + ',' + longitude%}
+                        <a href={{google_location}} target="_blank">
+                            <img src="./static/google-maps.png" style="width:30px;height:30px;">
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

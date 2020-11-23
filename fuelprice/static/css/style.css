@@ -1,0 +1,23 @@
+.jumbotron{
+/* margin-top: 15px; */
+padding: 17px;
+color: #FFFFFF;
+/* background-color: #f4511e!important; Orange */
+background-color: #3f376a!important;
+}
+
+.table td, .table th{
+color: #fff;
+border-top: 0px;
+}
+
+table.tableA td, table.tableA th{
+color: #000000;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #3f376a;
+    border-color: #fff;
+}
+

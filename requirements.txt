@@ -1,0 +1,7 @@
+gunicorn
+feedparser
+pandas
+flask
+flask_wtf
+jinja2
+requests

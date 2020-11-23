@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- add custom css file here-->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+</head>
+<body>
+    <div class="jumbotron text-center">
+        <h1>Fuel Price Search</h1>
+        {% block content %} {% endblock %}
+        {% block searchbutton %} {% endblock %}
+    </div>
+    <div class="" align="center">
+        {% block searchresult %} {% endblock %}
+    </div>
+    <div class="" align="center">
+        Powered by <a href="https://www.fuelwatch.wa.gov.au" target="_blank">FuelWatch</a><br>
+        <a href="https://github.com/ManjeetJass/Fuel-Comparison" target="_blank">Code @ Git</a>
+    </div>
+</body>
+</html>

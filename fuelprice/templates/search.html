@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2 class="title"></h2>
+  <form method="POST" action="" novalidate>
+      <table class="table" align="center">
+          <tr>
+              <td width="50%" align="right">
+                  {{ form.product.label }}
+              </td>
+              <td width="50%" align="left">
+                  {{ form.product }}
+              </td>
+          </tr>
+          <tr>
+              <td width="50%" align="right">
+                  {{ form.brand.label }}
+              </td>
+              <td width="50%" align="left">
+                  {{ form.brand }}
+              </td>
+          </tr>
+          <tr>
+              <td width="50%" align="right">
+                  {{ form.suburbs.label }}
+              </td>
+              <td width="50%" align="left">
+                  {{ form.suburbs }}
+                  {% for message in get_flashed_messages() %}
+                    <p>{{ message }}</p>
+                  {% endfor %}
+              </td>
+          </tr>
+          <tr>
+              <td width="50%" align="right">
+                  {{ form.surrounding.label }}
+              </td>
+              <td width="50%" align="left">
+                  {{ form.surrounding }}
+              </td>
+          </tr>
+          <tr>
+              <td width="50%" align="right">
+                  {{ form.submit }}
+              </td>
+              <td width="50%" align="left">
+                  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+              </td>
+          </tr>
+
+      </table>
+  </form>
+{% endblock %}
